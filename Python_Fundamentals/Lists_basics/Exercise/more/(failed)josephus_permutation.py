@@ -10,6 +10,8 @@ while len(solders_order) > 0:
     index = (index + k - 1) % len(solders_order)
     eliminated.append(solders_order.pop(index))
 
+    #  specific formatting was needed
+
 print('[', end='')
 for item in range(len(eliminated)-1):
     print(eliminated[item], end=',')
