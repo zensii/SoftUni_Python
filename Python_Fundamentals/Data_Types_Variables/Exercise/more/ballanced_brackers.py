@@ -22,4 +22,3 @@ if open_brackets == closed_brackets == 0:
     print(f'BALANCED')
 else:
     print(f'UNBALANCED')
-
