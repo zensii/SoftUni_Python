@@ -10,11 +10,14 @@ def check_possible_distribution(population, minimum):
 def distribute(population_wealth, minimum_wealth):
 
     while minimum_wealth > min(population_wealth):
+
         for i in range(len(population_wealth)):
             index_to_reduce = population_wealth.index(max(population_wealth))
+
             if population_wealth[i] < minimum_wealth:
-                population_wealth[index_to_reduce] -= 1
-                population_wealth[i] += 1
+                amount_to_reduce = minimum_wealth - min(population_wealth)
+                population_wealth[index_to_reduce] -= amount_to_reduce
+                population_wealth[i] += amount_to_reduce
 
     return population_wealth
 
