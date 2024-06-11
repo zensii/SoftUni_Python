@@ -1,10 +1,11 @@
 def fire(index, damage):
+
     if 0 <= index < len(warship_status):
         warship_status[index] -= damage
         if warship_status[index] <= 0:
             print('You won! The enemy ship has sunken.')
-            win = True
-            return win
+            return True
+    return False
 
 
 def defend(start_index, end_index, damage):
@@ -14,14 +15,15 @@ def defend(start_index, end_index, damage):
             ship_status[section] -= damage
             if ship_status[section] <= 0:
                 print(f'You lost! The pirate ship has sunken.')
-                lose = True
-                return lose
+                return True
+        return False
 
 
 def repair(index, health):
-    ship_status[index] += health
-    if ship_status[index] > max_section_health:
-        ship_status[index] = max_section_health
+    if 0 <= index < len(ship_status):
+        ship_status[index] += health
+        if ship_status[index] > max_section_health:
+            ship_status[index] = max_section_health
 
 
 def status():
@@ -39,22 +41,24 @@ win = False
 lose = False
 command = input()
 
-while command != 'Retire' and not win and not lose:
+while command != 'Retire':
 
     action = command.split()
 
     if action[0] == 'Fire':
         win = fire(int(action[1]), int(action[2]))
-    if action[0] == 'Defend':
+    elif action[0] == 'Defend':
         lose = defend(int(action[1]), int(action[2]), int(action[3]))
-    if action[0] == 'Repair':
+    elif action[0] == 'Repair':
         repair(int(action[1]), int(action[2]))
-    if action[0] == 'Status':
+    elif action[0] == 'Status':
         print(f'{status()} sections need repair.')
+
+    if win or lose:
+        break
 
     command = input()
 
 else:
-    if not lose and not win:
-        print(f'Pirate ship status: {sum(ship_status)}')
-        print(f'Warship status: {sum(warship_status)}')
+    print(f'Pirate ship status: {sum(ship_status)}')
+    print(f'Warship status: {sum(warship_status)}')
