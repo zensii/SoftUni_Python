@@ -39,7 +39,7 @@ def sort_dict(user_data):
 
 
 def main():
-    sorted_dict = {}
+
     user_data = {}
     contests = collect_contests()  # create db with contests and its password
     command = input()
@@ -55,8 +55,8 @@ def main():
                 if contest not in user_data[username].keys():  # check if user attended the same contest already:
                     user_data[username].update(user_points)  # if not add the points for this contest to the user data
                 else:
-                    if user_data[username][contest] < points:    # if yes check if new points are more than old and if yes add them
-                        user_data[username][contest] = points
+                    if user_data[username][contest] < points:    # if yes, check if new points are more than the old
+                        user_data[username][contest] = points    # and if yes add them.
         command = input()
 
     sorted_dict = sort_dict(user_data)

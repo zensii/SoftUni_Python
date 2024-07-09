@@ -25,7 +25,7 @@ def add_force_user(command, database):
     return database
 
 
-def find_key(database,user_name):
+def find_key(database, user_name):
     for force_side, user_names in database.items():
         if user_name in user_names:
             return force_side
