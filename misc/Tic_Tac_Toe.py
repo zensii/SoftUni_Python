@@ -1,5 +1,6 @@
 from colorama import Fore, Style, init
 import copy
+import random
 init()
 
 game_name = """
@@ -80,7 +81,37 @@ def win_check(board, mark):
     return False
 
 
-import random
+
+def print_final_board(board, mark):
+
+    checker = '[' + mark + ']'
+    for row in board:
+        if all(pos == checker for pos in row):
+            for index, pos in enumerate(row):
+                row[index] = '[' + Fore.GREEN + mark + Style.RESET_ALL + ']'
+    # check columns
+    for row in range(3):
+        counter = 0
+        position_coordinates = []
+        for column in range(3):
+            if board[column][row] == checker:
+                counter += 1
+                coord = (column, row)
+                position_coordinates.append(coord)
+        if counter == 3:
+            for win_coord in position_coordinates:
+                board[win_coord[0]][win_coord[1]] = '[' + Fore.GREEN + mark + Style.RESET_ALL + ']'
+        else:
+            position_coordinates.clear()
+
+    # check first diagonal
+    if board[0][0] == board[1][1] == board[2][2] == checker:
+        board[0][0] = board[1][1] = board[2][2] = '[' + Fore.GREEN + mark + Style.RESET_ALL + ']'
+    # check other diagonal
+    if board[2][0] == board[1][1] == board[0][2] == checker:
+        board[2][0] = board[1][1] = board[0][2] = '[' + Fore.GREEN + mark + Style.RESET_ALL + ']'
+
+    return board
 
 
 def choose_first(first_player, second_player):
@@ -199,17 +230,15 @@ while True:
         print(f"It's player {mark}'s turn.")
         next_position = player_choice(board)
         board = place_marker(board, next_position, mark)
-        # check for win
+
+        # check for win and print
         if win_check(board, mark):
             winning_board = copy.deepcopy(board)
-            colored_mark = Fore.GREEN + mark + Style.RESET_ALL
-            for i, row in enumerate(winning_board):
-                for j, pos in enumerate(row):
-                    if pos == '[' + mark + ']':
-                        winning_board[i][j] = '[' + colored_mark + ']'
+            print_final_board(winning_board, mark)
+
             print('\n' * 100)
             display_board(winning_board)
-            print(Style.RESET_ALL)
+
             print()
             print(Fore.GREEN + f"Player {mark} wins the round!")
             print(Style.RESET_ALL)
