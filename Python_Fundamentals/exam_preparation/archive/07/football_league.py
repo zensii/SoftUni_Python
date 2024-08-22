@@ -26,7 +26,6 @@ def match_result(code, usr_input):
     return result
 
 
-
 def update_leaderboard(match_result, leaderboard):
     winner = None
 
@@ -54,7 +53,6 @@ def sort_leaderboard(leaderboard):
 
 def sort_by_goal(leaderboard):
     return dict(sorted(leaderboard.items(), key=lambda x: (-x[1]['goals'], x)))
-
 
 
 reg_code = get_code(input())
