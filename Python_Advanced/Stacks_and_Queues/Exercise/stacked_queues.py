@@ -1,5 +1,4 @@
 stack = []
-
 lines = int(input())
 
 for line in range(lines):
