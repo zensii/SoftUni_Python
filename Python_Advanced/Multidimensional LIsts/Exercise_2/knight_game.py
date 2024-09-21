@@ -9,7 +9,6 @@ def count_attacks(current_row: int, current_col: int) -> int:
         if 0 <= possible_row_index < board_size and 0 <= possible_col_index < board_size:
             if matrix[possible_row_index][possible_col_index] == 'K':
                 attacks += 1
-
     return attacks
 
 
@@ -35,7 +34,7 @@ while True:
                     max_targets = current_knight_targets
                     cur_to_remove_coord = (r_index, c_index)
 
-    if cur_to_remove_coord is not None:
+    if cur_to_remove_coord is not None:  # terminates if no knight is found that can attack another
         matrix[cur_to_remove_coord[0]][cur_to_remove_coord[1]] = '0'
         removed += 1
     else:
