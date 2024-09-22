@@ -39,17 +39,17 @@ def get_directions() -> dict[str, list[tuple[int, int]]]:
     return directions_dict
 
 
-def check_for_traps(directions):
+def check_for_traps(directions: dict) -> None:
 
     for key, direction_coords in directions.items():
-        for coordinate in direction_coords:
+        for i, coordinate in enumerate(direction_coords):
             if coordinate in trap_positions:
-                directions[key] = directions[key][:directions[key].index(coordinate)]
+                directions[key] = directions[key][:i]
                 break
 
 
-def calculate_eggs(directions) -> tuple[int, str]:
-    max_eggs = 0
+def calculate_eggs(directions: dict) -> tuple[int, str]:
+    max_eggs = float('-inf')
     best_path = None
 
     for key, direction_coords in directions.items():
