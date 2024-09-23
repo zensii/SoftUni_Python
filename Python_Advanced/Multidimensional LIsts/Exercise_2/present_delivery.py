@@ -66,11 +66,11 @@ while presents:
             for happy_direction in moves.keys():
                 happy_row, happy_col = move(happy_direction)
 
-                if matrix[happy_row][happy_col] == 'X':
+                if matrix[happy_row][happy_col] in 'VX' and presents > 0:
                     presents -= 1
-                    matrix[happy_row][happy_col] = '-'
-                elif matrix[happy_row][happy_col] == 'V':
-                    drop_presents()
+                    if matrix[happy_row][happy_col] == 'V':
+                        good_kids -= 1
+                        good_kids_visited += 1
                     matrix[happy_row][happy_col] = '-'
 
         matrix[santa_location[0]][santa_location[1]] = 'S'
