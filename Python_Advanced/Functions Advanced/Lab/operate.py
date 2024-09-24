@@ -10,7 +10,7 @@ def operate(operation: str, *args: int) -> int:
     def multiply_args():
         result = reduce(lambda x, y: x * y, args)
         return result
-    def divide_args():
+    def divide_args() -> float:
         if 0 in args[1:]:
             raise ValueError("Division by zero not allowed")
         else:
