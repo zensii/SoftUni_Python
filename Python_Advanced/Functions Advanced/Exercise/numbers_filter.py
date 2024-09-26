@@ -5,6 +5,9 @@ def even_odd_filter(**kwargs):
     if 'odd' in kwargs:
         kwargs['odd'] = [odd_num for odd_num in kwargs['odd'] if odd_num % 2 != 0]
 
+    # an alternative solution using dict comprehension
+    # kwargs = {key: [ x for x in numbers if x%2 == ( 0 if key == 'even' else 1)] for key, numbers in kwargs.items()}
+
     return dict(sorted(kwargs.items() , key= lambda x: -len(x[1])))
 
 print(even_odd_filter(
