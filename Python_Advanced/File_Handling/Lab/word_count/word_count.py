@@ -8,7 +8,7 @@ with open("output.txt", 'w') as output:
     counted = []
 
     for word in words:
-        matches = re.findall(fr"\W{word}\W", text, re.IGNORECASE)
+        matches = re.findall(fr"\b{word}\b", text, re.IGNORECASE)
         counted.append((word, len(matches)))
 
     for counts in sorted(counted, key=lambda x: -x[1]):
