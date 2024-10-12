@@ -55,5 +55,3 @@ else:
 
 print(f"Player's health: {health} units")
 [print(*row, sep='') for row in matrix]
-
-
