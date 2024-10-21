@@ -11,4 +11,4 @@ def print_rhombus(n):
         stars = i
         print(print_line(spaces, stars))
 
-print_rhombus(6)
+print_rhombus(int(input()))
