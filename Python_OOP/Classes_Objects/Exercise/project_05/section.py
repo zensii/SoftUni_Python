@@ -1,5 +1,5 @@
-# from Python_OOP.Classes_Objects.Exercise.05.project.task import Task
-from project.task import Task # changed because of Judge requirements
+# from Python_OOP.Classes_Objects.Exercise.05.project_06.task import Task
+from project_05.task import Task # changed because of Judge requirements
 
 class Section:
     def __init__(self, name: str):

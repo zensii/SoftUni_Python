@@ -1,4 +1,4 @@
-from project.player import Player # need to set the correct folder as resource root
+from project_06.player import Player  # need to set the correct folder as resource root
 
 class Guild:
     def __init__(self, name: str):
