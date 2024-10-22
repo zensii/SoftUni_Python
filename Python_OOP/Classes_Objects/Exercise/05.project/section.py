@@ -1,4 +1,4 @@
-# from Python_OOP.Classes_Objects.Exercise.project.task import Task
+# from Python_OOP.Classes_Objects.Exercise.05.project.task import Task
 from project.task import Task # changed because of Judge requirements
 
 class Section:
