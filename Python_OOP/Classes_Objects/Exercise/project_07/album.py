@@ -1,14 +1,14 @@
-from typing import List, Union
+from typing import List, Tuple
 from project_07.song import Song
 
 
 class Album:
-    def __init__(self, name: str, *args: Union[List[Song] | Song]):
+    def __init__(self, name: str, *args: [Tuple[Song], Song]):
         self.name = name
         self.published = False
         self.songs = []
         for arg in args:
-            if isinstance(arg, list):
+            if isinstance(arg, tuple):
                 self.songs.extend(arg)
             else:
                 self.songs.append(arg)
