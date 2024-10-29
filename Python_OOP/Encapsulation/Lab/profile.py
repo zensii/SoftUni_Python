@@ -24,13 +24,12 @@ class Profile:
     def password(self, pass_word):
         pat_d = r'[0-9]'
         pat_l = r'[A-Z]'
-        digit_present = re.findall(pat_d, pass_word)
-        upper_l_present = re.findall(pat_l, pass_word)
+        digit_present = len(re.findall(pat_d, pass_word)) > 0
+        upper_l_present = len(re.findall(pat_l, pass_word)) > 0
         if 8 <= len(pass_word) and digit_present and upper_l_present:
             self.__password = pass_word
         else:
             raise ValueError("The password must be 8 or more characters with at least 1 digit and 1 uppercase letter.")
-
 
     def __str__(self):
         return f'You have a profile with username: "{self.username}" and password: {"*" * len(self.password)}'
@@ -38,5 +37,5 @@ class Profile:
 
 # profile_with_invalid_password = Profile('My_username', 'My-password')
 # profile_with_invalid_username = Profile('Too_long_username', 'Any')
-correct_profile = Profile("Username", "Passw0rd")
+correct_profile = Profile("Username", "Password")
 print(correct_profile)
