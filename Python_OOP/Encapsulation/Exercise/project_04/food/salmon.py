@@ -1,0 +1,11 @@
+from project_04.food.main_dish import MainDish
+
+
+class Salmon(MainDish):
+    GRAMS = 22
+    def __init__(self, name: str, price: float):
+        super().__init__(name, price, Salmon.GRAMS)
+
+    # @property
+    # def grams(self):
+    #     return Salmon.GRAMS
