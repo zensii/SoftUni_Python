@@ -1,3 +1,6 @@
+from math import floor
+
+
 class Integer:
     def __init__(self, value: int):
         self.value = value
@@ -33,7 +36,7 @@ class Integer:
     @classmethod
     def from_string(cls, value: str):
         if type(value) == str:
-            return Integer(int(value))
+            return Integer(floor(float(value)))
         else:
              return 'wrong type'
 
