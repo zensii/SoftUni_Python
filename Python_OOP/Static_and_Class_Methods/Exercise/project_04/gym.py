@@ -45,8 +45,8 @@ class Gym:
         subs = [sub for sub in self.subscriptions if sub.id == subscription_id][0]
         cust = [cust for cust in self.customers if cust.id == subs.customer_id][0]
         train = [train for train in self.trainers if train.id == subs.trainer_id][0]
-        equip = [equip for equip in self.equipment if equip.id == subs.exercise_id][0]
         pln = [pln for pln in self.plans if pln.equipment_id == subs.exercise_id][0]
+        equip = [equip for equip in self.equipment if equip.id == pln.exercise_id][0]
 
         return f"{subs.__repr__()}\n{cust.__repr__()}\n{train.__repr__()}\n{equip.__repr__()}\n{pln.__repr__()}"
 
