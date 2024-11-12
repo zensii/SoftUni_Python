@@ -1,4 +1,4 @@
-from project.cat import Cat
+from project_05.cat import Cat
 
 
 class Kitten(Cat):
